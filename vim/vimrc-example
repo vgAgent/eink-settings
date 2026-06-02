@@ -1,12 +1,15 @@
 set termguicolors
-colorscheme eink-light
+colorscheme morning-eink
 
-" toggle between light and dark with F5
-nnoremap <F5> :call ToggleEinkTheme()<CR>
-function! ToggleEinkTheme()
-  if g:colors_name == "eink-light"
+" F5: cycle through e-ink themes
+nnoremap <F5> :call CycleEinkTheme()<CR>
+function! CycleEinkTheme()
+  if g:colors_name == 'morning-eink'
+    colorscheme eink-light
+  elseif g:colors_name == 'eink-light'
     colorscheme eink-dark
   else
-    colorscheme eink-light
+    colorscheme morning-eink
   endif
+  echo g:colors_name
 endfunction
