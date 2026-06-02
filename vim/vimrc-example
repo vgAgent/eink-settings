@@ -1,0 +1,12 @@
+set termguicolors
+colorscheme eink-light
+
+" toggle between light and dark with F5
+nnoremap <F5> :call ToggleEinkTheme()<CR>
+function! ToggleEinkTheme()
+  if g:colors_name == "eink-light"
+    colorscheme eink-dark
+  else
+    colorscheme eink-light
+  endif
+endfunction
