@@ -10,7 +10,8 @@ endif
 
 colorscheme morning-eink
 
-" cycle themes with \ then t (works in tmux/SSH, no F-keys needed)
+" cycle themes: ,t works everywhere; \t may fail if \ is your tmux prefix
+nnoremap ,t :call CycleEinkTheme()<CR>
 nnoremap <Leader>t :call CycleEinkTheme()<CR>
 function! CycleEinkTheme()
   if g:colors_name == 'morning-eink'
