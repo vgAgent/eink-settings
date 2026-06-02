@@ -22,12 +22,12 @@ hi EndOfBuffer     guifg=#333333 guibg=#000000 ctermfg=8   ctermbg=0
 
 " Syntax — 6 distinct levels
 hi Comment         guifg=#666666               ctermfg=8   gui=italic    cterm=italic
-hi String          guifg=#aaaaaa               ctermfg=7   gui=italic    cterm=italic
-hi Character       guifg=#aaaaaa               ctermfg=7
-hi Number          guifg=#aaaaaa               ctermfg=7
-hi Float           guifg=#aaaaaa               ctermfg=7
-hi Boolean         guifg=#cccccc               ctermfg=15  gui=bold      cterm=bold
-hi Constant        guifg=#aaaaaa               ctermfg=7
+hi String          guifg=#cccccc               ctermfg=7   gui=italic    cterm=italic
+hi Character       guifg=#cccccc               ctermfg=7
+hi Number          guifg=#cccccc               ctermfg=7
+hi Float           guifg=#cccccc               ctermfg=7
+hi Boolean         guifg=#dddddd               ctermfg=15  gui=bold      cterm=bold
+hi Constant        guifg=#cccccc               ctermfg=7
 hi Identifier      guifg=#ffffff               ctermfg=15
 hi Function        guifg=#e0e0e0               ctermfg=15  gui=bold      cterm=bold
 hi Statement       guifg=#ffffff               ctermfg=15  gui=bold      cterm=bold
@@ -36,10 +36,10 @@ hi Conditional     guifg=#ffffff               ctermfg=15  gui=bold      cterm=b
 hi Repeat          guifg=#ffffff               ctermfg=15  gui=bold      cterm=bold
 hi Exception       guifg=#ffffff               ctermfg=15  gui=bold      cterm=bold
 hi Operator        guifg=#ffffff               ctermfg=15
-hi PreProc         guifg=#888888               ctermfg=8
-hi Include         guifg=#888888               ctermfg=8
-hi Define          guifg=#888888               ctermfg=8
-hi Macro           guifg=#888888               ctermfg=8
+hi PreProc         guifg=#bbbbbb               ctermfg=7
+hi Include         guifg=#bbbbbb               ctermfg=7
+hi Define          guifg=#bbbbbb               ctermfg=7
+hi Macro           guifg=#bbbbbb               ctermfg=7
 hi Type            guifg=#cccccc               ctermfg=15  gui=bold      cterm=bold
 hi StorageClass    guifg=#cccccc               ctermfg=15  gui=bold      cterm=bold
 hi Structure       guifg=#cccccc               ctermfg=15  gui=bold      cterm=bold
