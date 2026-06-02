@@ -81,6 +81,41 @@ Order: `morning-eink` → `eink-light` → `eink-dark` → back.
 
 ---
 
+## ls colors (dircolors)
+
+`.dircolors` replaces the default `LS_COLORS` for better visibility on a dark e-ink terminal.
+
+### Install
+
+```bash
+cp .dircolors ~/.dircolors
+source ~/.bashrc   # already hooks ~/.dircolors if dircolors is available
+```
+
+### What changed and why
+
+On e-ink, ANSI colors map to gray levels based on their luminance. On a **dark (black) terminal**, low-luminance colors — especially blue — are nearly indistinguishable from the background.
+
+| Luminance | Colors | Readable on dark e-ink? |
+|---|---|---|
+| ~100% | white | ✅ very visible |
+| ~90% | yellow | ✅ visible |
+| ~70% | cyan | ✅ ok |
+| ~50% | green | ⚠️ marginal |
+| ~30% | red | ⚠️ marginal |
+| ~10% | blue | ❌ nearly invisible |
+
+| Type | Default color | New color | Reason |
+|---|---|---|---|
+| Directories | bold blue `01;34` | **bold white** `01;37` | Blue ≈ black on dark e-ink |
+| Executables | bold green `01;32` | **bold yellow** `01;33` | Green is medium-dark |
+| Archives `.tar/.gz/…` | bold red `01;31` | **bold yellow** `01;33` | Red is dark on e-ink |
+| Symlinks | bold cyan `01;36` | bold cyan `01;36` | Already ok, kept as-is |
+| Images / audio | bold magenta `01;35` | cyan `00;36` | Magenta is dark, media is secondary |
+| `.swp`, `.bak`, `*~` | dark gray `00;90` | **white** `00;37` | `00;90` = completely invisible on black |
+
+---
+
 ## Why pure backgrounds matter on e-ink
 
 E-ink screens refresh differently from LCD. When a pixel needs to change between two non-exact gray values, the display has to run a full waveform cycle on that pixel, causing visible flickering. Pure white (`#ffffff`) and pure black (`#000000`) use optimized fast-refresh modes. Themes like the default `morning` use `#e4e4e4` as the background, which forces every pixel on screen into the slow path — hence the flicker.
