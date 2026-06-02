@@ -10,8 +10,8 @@ endif
 
 colorscheme morning-eink
 
-" :T to cycle themes — works in any SSH/tmux environment
-command! T call CycleEinkTheme()
+" :Theme to cycle themes — works in any SSH/tmux environment
+command! Theme call CycleEinkTheme()
 function! CycleEinkTheme()
   if g:colors_name == 'morning-eink'
     colorscheme eink-light
