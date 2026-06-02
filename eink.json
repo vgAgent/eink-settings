@@ -1,0 +1,9 @@
+{
+  "name": "E-Ink",
+  "base": "dark",
+  "overrides": {
+    "inactive": "#cccccc",
+    "inactiveShimmer": "#aaaaaa",
+    "subtle": "#bbbbbb"
+  }
+}

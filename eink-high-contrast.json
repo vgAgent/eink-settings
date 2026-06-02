@@ -1,0 +1,44 @@
+{
+  "name": "E-Ink High Contrast",
+  "base": "dark",
+  "overrides": {
+    "text": "#ffffff",
+    "inactive": "#cccccc",
+    "inactiveShimmer": "#aaaaaa",
+    "subtle": "#bbbbbb",
+    "claude": "#ffffff",
+    "claudeShimmer": "#cccccc",
+    "inverseText": "#000000",
+    "suggestion": "#dddddd",
+    "permission": "#ffffff",
+    "permissionShimmer": "#cccccc",
+    "remember": "#ffffff",
+
+    "success": "#ffffff",
+    "error": "#ffffff",
+    "warning": "#ffffff",
+    "warningShimmer": "#cccccc",
+    "merged": "#ffffff",
+
+    "promptBorder": "#ffffff",
+    "promptBorderShimmer": "#cccccc",
+    "planMode": "#ffffff",
+    "autoAccept": "#ffffff",
+    "bashBorder": "#ffffff",
+    "ide": "#ffffff",
+    "fastMode": "#ffffff",
+    "fastModeShimmer": "#cccccc",
+
+    "diffAdded": "#2a2a2a",
+    "diffRemoved": "#3a3a3a",
+    "diffAddedDimmed": "#1a1a1a",
+    "diffRemovedDimmed": "#222222",
+    "diffAddedWord": "#888888",
+    "diffRemovedWord": "#666666",
+
+    "briefLabelYou": "#ffffff",
+    "briefLabelClaude": "#ffffff",
+    "rate_limit_fill": "#ffffff",
+    "rate_limit_empty": "#444444"
+  }
+}
