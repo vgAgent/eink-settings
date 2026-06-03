@@ -193,16 +193,40 @@ export GCC_COLORS='error=01;37:warning=01;33:note=01;36:caret=01;37:locus=01:quo
 
 Configured in `gitconfig-example` (copy to `~/.gitconfig`).
 
+> **⚠️ READ THIS FIRST — the #1 gotcha that wasted hours.**
+>
+> **`color.ui` MUST be `always`, not `auto`.** In this tmux/ssh setup, `auto`
+> silently does **not** colorize `git diff` — so *every* color/style you set is
+> invisible and the diff looks like a plain uncolored default. It is **not** that
+> your colors are wrong; color is simply **off**.
+>
+> **Diagnostic** (run if styles "aren't applying"): compare these two —
+> ```bash
+> git diff HEAD~1                    # if plain/uncolored → color is OFF
+> git -c color.ui=always diff HEAD~1 # if THIS shows colors → fix is color.ui=always
+> ```
+> If the second is colored and the first isn't, the problem is `color.ui`, **not**
+> the color values. Don't touch the colors — fix `color.ui`.
+>
+> Trade-off: `always` emits color codes even when piping to a file/program. For
+> interactive use that's fine; add `--no-color` to any command you pipe to a script.
+
 | Context | Element | Color | Why |
 |---|---|---|---|
-| `git status` | added | bold white | |
-| `git status` | changed | bold yellow | Distinct from added |
-| `git status` | untracked/deleted | white | Less emphasis |
-| `git diff` | new lines | bold white | Bold = heavier strokes = "added" |
-| `git diff` | old lines | white | Lighter strokes = "removed" — color alone can't distinguish on e-ink |
-| `git diff` | headers | bold yellow | |
-| `git branch` | current | bold white reverse | Stands out clearly |
-| `git branch` | remote | bold yellow | |
+| `git diff` | added (`+`) | bold white | Brightest, heaviest strokes |
+| `git diff` | removed (`-`) | **bold** black on gray block `48;5;254` | Same block as PS1 path. **Bold is essential** — non-bold black is too thin to read on e-ink |
+| `git diff` | file header (`---`/`+++`) | bold white + underline | |
+| `git diff` | hunk (`@@`) | bold yellow + underline | Different hue tier |
+| `git status` | added / changed | bold white / bold yellow | |
+| `git branch` | current | gray block | Same block style |
+
+**`+`/`-` spacing:** git natively glues the marker to content (`-text`). The
+`gitdiff-pager.sh` filter inserts a space (`- text`). It only works because
+`color.ui=always` feeds it colored bytes — the filter matches on the color codes.
+
+**git can't color `---` and `+++` separately** (both use the single `meta` slot).
+The only tool that can is `delta` — see `gitconfig-delta-version` in this repo for a
+ready e-ink delta config if you want it (it has its own quirks; plain git is simpler).
 
 ### diff
 
