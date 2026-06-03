@@ -14,6 +14,7 @@
 	line-numbers = true
 	hyperlinks  = false
 	tabs        = 4
+	keep-plus-minus-markers = true   # keep literal +/- at line start as an explicit cue
 
 	# ── file header → bold white text, underlined, with the path shown once
 	file-style            = bold white
