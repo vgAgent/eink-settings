@@ -10,10 +10,10 @@
 	func       = cyan
 	# commit header in git show                  → bold white
 	commit     = white bold
-	# REMOVED lines → white-on-dark-gray block, STRUCK THROUGH (semantically "deleted")
-	old        = white 237 strike
-	# ADDED lines   → black-on-light-gray block, bold (semantically "highlighted/new")
-	new        = black 254 bold
+	# REMOVED lines → struck through (no bg → no tab gaps; strike = "deleted")
+	old        = white strike
+	# ADDED lines   → bold bright white (heaviest strokes = "new"), no bg
+	new        = white bold
 	# trailing whitespace                        → reverse so it's caught
 	whitespace = reverse
 
