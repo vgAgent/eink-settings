@@ -30,19 +30,17 @@
 	hunk-header-file-style       = white bold
 	hunk-header-line-number-style = yellow bold
 
-	# ── ADDED lines → bold white text on DARK gray block (#3a3a3a), full width
-	plus-style      = bold 231 237
-	# changed WORDS within an added line → bold white on a lighter dark block (pops out)
-	plus-emph-style = bold 231 241
-
-	# ── REMOVED lines → black text on LIGHT gray block (#e4e4e4), full width
-	# Opposite brightness from added → the two line types are unmistakable as blocks,
-	# no need to hunt for the +/- marker (delta can't style the marker separately).
-	minus-style      = black 254
-	# changed WORDS within a removed line → black on slightly darker gray block
-	minus-emph-style = black 249
-
-	# ── context (unchanged) lines → plain white on terminal black (no block)
+	# Both change types use LIGHT blocks (dark grays are invisible on e-ink — they
+	# read as the black terminal bg). Distinguished by DIFFERENT light shades + bold.
+	# ── ADDED lines → bold black on LIGHTEST block (#e4e4e4 = 254)
+	plus-style      = bold black 254
+	# changed WORDS within an added line → bold black on a darker patch (pops out)
+	plus-emph-style = bold black 250
+	# ── REMOVED lines → black on a MEDIUM-light block (#a8a8a8 = 248), normal weight
+	minus-style      = black 248
+	# changed WORDS within a removed line → bold black on lighter patch
+	minus-emph-style = bold black 254
+	# ── context (unchanged) lines → plain white text on black (no block, recedes)
 	zero-style = white
 
 	# ── line-number gutter (avoid dim grays 240/245 — invisible on e-ink; use 250+)
