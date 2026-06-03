@@ -10,12 +10,12 @@
 	func       = cyan
 	# commit header in git show                  → bold white
 	commit     = white bold
-	# ADDED lines   → bold bright WHITE (#ffffff) — brightest, heaviest
+	# ADDED lines   → bold bright WHITE text on black — clean, no bg, no tab gaps
 	new        = 231 bold
-	# REMOVED lines → medium GRAY (#8a8a8a) — clearly dimmer, still readable
-	# (terminal renders no underline/strike, and cyan≈white on e-ink, so only
-	#  a real brightness gap differentiates them)
-	old        = 245
+	# REMOVED lines → black text on light-gray block (#e4e4e4 = same as PS1 path)
+	# Only a bg block stays visible AND distinct: dim grays vanish, hues≈white,
+	# underline/strike don't render. Leading tabs gap, but the block reads clearly.
+	old        = black 254
 	# trailing whitespace                        → reverse so it's caught
 	whitespace = reverse
 
