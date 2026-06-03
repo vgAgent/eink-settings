@@ -148,6 +148,72 @@ The change is already in `bashrc-example`. To apply just the prompt line, replac
 
 ---
 
+## Shell command colors
+
+All configured in `bashrc-example` (sourced via `~/.bashrc`) and `gitconfig-example`.
+
+The same principle throughout: **no blue/red/green** (all dark on e-ink). Use white, yellow, cyan. Highlights reuse the same light gray background block (`48;5;254` = `#e4e4e4`) as the PS1 path for visual consistency.
+
+### grep
+
+```bash
+export GREP_COLORS='ms=48;5;254;01;30:mc=48;5;254;01;30:fn=01;33:ln=00;37:bn=00;37:se=00;37'
+```
+
+| Token | Meaning | Value | Why |
+|---|---|---|---|
+| `ms` | matched text | gray bg + bold black | Same block style as PS1 path |
+| `fn` | filename | bold yellow | High luminance, clearly a label |
+| `ln` | line number | white | Secondary info, no emphasis |
+| `se` | separator (`:`) | white | Neutral |
+
+### man / less
+
+`LESS_TERMCAP_*` vars fix the colors `man` uses when rendering pages through `less`.
+
+| Var | Controls | Value | Why |
+|---|---|---|---|
+| `md` | bold text (section headers) | bold white | Highest contrast |
+| `us` | underline (command names, args) | bold yellow | Distinct from headers |
+| `so` | standout (status bar, search highlight) | gray bg + bold black | Same block style |
+
+### GCC
+
+```bash
+export GCC_COLORS='error=01;37:warning=01;33:note=01;36:caret=01;37:locus=01:quote=01'
+```
+
+| Token | Default | New | Why |
+|---|---|---|---|
+| `error` | bold red | bold white | Red is dark on e-ink |
+| `warning` | bold magenta | bold yellow | Magenta is dark |
+| `note` | bold cyan | bold cyan | Already ok |
+
+### git
+
+Configured in `gitconfig-example` (copy to `~/.gitconfig`).
+
+| Context | Element | Color | Why |
+|---|---|---|---|
+| `git status` | added | bold white | |
+| `git status` | changed | bold yellow | Distinct from added |
+| `git status` | untracked/deleted | white | Less emphasis |
+| `git diff` | new lines | bold white | Bold = heavier strokes = "added" |
+| `git diff` | old lines | white | Lighter strokes = "removed" — color alone can't distinguish on e-ink |
+| `git diff` | headers | bold yellow | |
+| `git branch` | current | bold white reverse | Stands out clearly |
+| `git branch` | remote | bold yellow | |
+
+### diff
+
+```bash
+alias diff='diff --color=auto'
+```
+
+No standard env var for `diff` colors — it uses hardcoded terminal palette colors. Enabled here so at least the structure is visible; install `colordiff` for full control.
+
+---
+
 ## Why pure backgrounds matter on e-ink
 
 E-ink screens refresh differently from LCD. When a pixel needs to change between two non-exact gray values, the display has to run a full waveform cycle on that pixel, causing visible flickering. Pure white (`#ffffff`) and pure black (`#000000`) use optimized fast-refresh modes. Themes like the default `morning` use `#e4e4e4` as the background, which forces every pixel on screen into the slow path — hence the flicker.

@@ -1,0 +1,31 @@
+[color]
+	ui = auto
+
+[color "status"]
+	# e-ink: avoid green/red (dark). bold white = added, bold yellow = modified, white = rest
+	added     = bold white
+	changed   = bold yellow
+	untracked = white
+	deleted   = white
+	branch    = bold white
+
+[color "diff"]
+	# added vs removed: distinguish by weight (bold vs normal) since green/red = same gray on e-ink
+	meta       = bold yellow
+	frag       = bold yellow
+	func       = bold yellow
+	old        = white          # removed lines — normal weight
+	new        = bold white     # added lines — bold, heavier strokes
+	whitespace = reverse
+
+[color "branch"]
+	current  = bold white reverse
+	local    = white
+	remote   = bold yellow
+	upstream = bold yellow
+
+[color "grep"]
+	filename  = bold yellow
+	linenumber = white
+	match      = bold white reverse
+	separator  = white
