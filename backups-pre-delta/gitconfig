@@ -1,56 +1,6 @@
 [color]
 	ui = auto
 
-[core]
-	pager = delta
-
-[interactive]
-	diffFilter = delta --color-only
-
-[delta]
-	# E-ink theme. No "syntax" keyword anywhere → stays grayscale (no code colors).
-	# Delta pads lines to full width, so background blocks fill cleanly (no tab gaps).
-	navigate    = true          # n / N to jump between files
-	line-numbers = true
-	hyperlinks  = false
-	tabs        = 4
-
-	# ── file header → bold white text, underlined, with the path shown once
-	file-style            = bold white
-	file-decoration-style = white ul
-	# delta shows old/new paths in its file header; color them by side:
-	file-added-label      = [+]
-	file-removed-label    = [-]
-	file-modified-label   = [~]
-
-	# ── hunk header (@@ … @@ + function context) → bold yellow, boxed to set it apart
-	hunk-header-style            = yellow bold
-	hunk-header-decoration-style = yellow box
-	hunk-header-file-style       = white bold
-	hunk-header-line-number-style = yellow bold
-
-	# ── ADDED lines → bold bright white text, no bg (clean, brightest)
-	plus-style      = bold 231
-	# changed WORDS within an added line → bold white on dark block (pinpoints the edit)
-	plus-emph-style = bold 231 238
-
-	# ── REMOVED lines → black text on light-gray block, full width (no gaps via delta)
-	minus-style      = black 254
-	# changed WORDS within a removed line → black on slightly darker gray block
-	minus-emph-style = black 250
-
-	# ── context (unchanged) lines → plain white
-	zero-style = white
-
-	# ── line-number gutter (avoid dim grays 240/245 — invisible on e-ink; use 250+)
-	line-numbers-left-style  = 250
-	line-numbers-right-style = 250
-	line-numbers-minus-style = 250
-	line-numbers-plus-style  = white
-	line-numbers-zero-style  = 250
-	line-numbers-left-format  = "{nm:>4}┊"
-	line-numbers-right-format = "{np:>4}│"
-
 [color "diff"]
 	# Each element a DISTINCT style. Underline DOES render on this terminal.
 	# file header (diff --git, index, ---, +++)  → bold white + UNDERLINE
@@ -112,6 +62,3 @@
 	lg = log --pretty=format:'%C(bold white)%h%Creset %C(bold yellow)%d%Creset %s %C(white)(%cr) %C(white)<%an>%Creset'
 	# same but with full date and graph
 	lgg = log --graph --pretty=format:'%C(bold white)%h%Creset %C(bold yellow)%d%Creset %s %C(white)(%cr) <%an>%Creset'
-	# OLD pre-delta diff (uses [color "diff"] styling + less, bypasses delta)
-	rawdiff = -c core.pager='less -R' diff
-	rawshow = -c core.pager='less -R' show

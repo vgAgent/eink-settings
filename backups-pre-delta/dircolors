@@ -1,0 +1,69 @@
+# E-ink dark terminal LS_COLORS
+# On e-ink, color luminance maps to gray level — blue/red are nearly invisible on black.
+# Strategy: use white/yellow (high luminance) for important types, avoid blue entirely.
+#
+# ANSI luminance on dark bg (approx): white=100% yellow=90% cyan=70% green=50% red=30% blue=10%
+
+RESET 0
+DIR 01;37           # directories      → bold white   (was bold blue — nearly invisible)
+LINK 01;36          # symlinks         → bold cyan
+MULTIHARDLINK 00;37 # hard links       → white
+FIFO 01;33          # named pipes      → bold yellow
+SOCK 01;33          # sockets          → bold yellow
+DOOR 01;33          # doors            → bold yellow
+BLK 01;33           # block devices    → bold yellow
+CHR 01;33           # char devices     → bold yellow
+ORPHAN 07;37        # broken symlinks  → reverse white
+MISSING 07;37       # missing targets  → reverse white
+EXEC 01;33          # executables      → bold yellow  (was bold green)
+SETUID 07;37        # setuid           → reverse white
+SETGID 07;37        # setgid           → reverse white
+STICKY_OTHER_WRITABLE 07;37
+OTHER_WRITABLE 07;37
+STICKY 07;37
+
+# Archives / compressed
+.tar 01;33
+.tgz 01;33
+.gz  01;33
+.bz2 01;33
+.xz  01;33
+.zip 01;33
+.rar 01;33
+.7z  01;33
+.deb 01;33
+.rpm 01;33
+.jar 01;33
+.whl 01;33
+.zst 01;33
+
+# Images / video / audio — cyan, visible but not as loud as dirs
+.jpg  00;36
+.jpeg 00;36
+.png  00;36
+.gif  00;36
+.bmp  00;36
+.tif  00;36
+.tiff 00;36
+.svg  00;36
+.webp 00;36
+.mp4  00;36
+.mkv  00;36
+.mov  00;36
+.avi  00;36
+.mp3  00;36
+.flac 00;36
+.wav  00;36
+.ogg  00;36
+.m4a  00;36
+
+# Backup / temp — plain white instead of dark gray (00;90 = invisible on black)
+.bak     00;37
+.swp     00;37
+.tmp     00;37
+.orig    00;37
+.old     00;37
+.rej     00;37
+.part    00;37
+*~       00;37
+*#       00;37
