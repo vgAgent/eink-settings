@@ -2,18 +2,19 @@
 	ui = auto
 
 [color "diff"]
-	# file header (diff --git, index, ---, +++)  → gray block, like PS1 path
-	meta       = bold black 254
-	# @@ hunk position                           → bold yellow, clearly a section break
-	frag       = bold yellow
-	# function name in @@                        → yellow (softer than frag)
-	func       = yellow
+	# file header (diff --git, index, ---, +++)  → underlined bold yellow, clear file boundary
+	meta       = yellow bold ul
+	# @@ hunk position                           → bold cyan, a different tier from headers
+	frag       = cyan bold
+	# function name in @@ context                → cyan (softer than frag)
+	func       = cyan
 	# commit header in git show                  → bold white
-	commit     = bold white
-	# removed lines                              → normal white (lighter strokes = "less")
-	old        = white
-	# added lines                                → bold white (heavier strokes = "more")
-	new        = bold white
+	commit     = white bold
+	# REMOVED lines → white-on-dark-gray block, STRUCK THROUGH (semantically "deleted")
+	old        = white 237 strike
+	# ADDED lines   → black-on-light-gray block, bold (semantically "highlighted/new")
+	new        = black 254 bold
+	# trailing whitespace                        → reverse so it's caught
 	whitespace = reverse
 
 [color "status"]
