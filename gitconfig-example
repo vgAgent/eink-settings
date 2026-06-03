@@ -1,43 +1,61 @@
 [color]
 	ui = auto
 
-[color "status"]
-	added     = bold white
-	changed   = bold yellow
-	untracked = white
-	deleted   = white
-	branch    = bold white
-
 [color "diff"]
-	# meta covers: diff --git, index, deleted/new file mode lines
-	meta       = bold white     # was bold yellow — not bright enough
-	frag       = bold yellow    # @@ hunk headers
-	func       = bold yellow    # function name in hunk header
-	commit     = bold white     # commit header in git show
-	old        = white          # removed lines — normal weight
-	new        = bold white     # added lines — bold, heavier strokes
+	# file header (diff --git, index, ---, +++)  → gray block, like PS1 path
+	meta       = bold black 254
+	# @@ hunk position                           → bold yellow, clearly a section break
+	frag       = bold yellow
+	# function name in @@                        → yellow (softer than frag)
+	func       = yellow
+	# commit header in git show                  → bold white
+	commit     = bold white
+	# removed lines                              → normal white (lighter strokes = "less")
+	old        = white
+	# added lines                                → bold white (heavier strokes = "more")
+	new        = bold white
 	whitespace = reverse
 
+[color "status"]
+	# staged (ready to commit)                   → bold white (most important)
+	added      = bold white
+	# modified but not staged                    → bold yellow (needs attention)
+	changed    = bold yellow
+	# untracked / deleted                        → white (exists but lower priority)
+	untracked  = white
+	deleted    = white
+	# branch name line                           → gray block
+	branch     = bold black 254
+
 [color "branch"]
-	current  = bold white reverse
-	local    = white
+	# current branch                             → gray block (same as PS1 path)
+	current  = bold black 254
+	# local branches                             → bold white
+	local    = bold white
+	# remote branches                            → bold yellow (different tier)
 	remote   = bold yellow
-	upstream = bold yellow
+	upstream = yellow
 
 [color "decorate"]
-	HEAD         = bold white reverse
+	# HEAD pointer                               → gray block (highest priority)
+	HEAD         = bold black 254
+	# local branches                             → bold white
 	branch       = bold white
+	# remote branches                            → bold yellow
 	remoteBranch = bold yellow
-	tag          = bold yellow
+	# tags                                       → yellow italic (distinct from branches)
+	tag          = italic yellow
 	stash        = white
 	grafted      = bold white
 
 [color "grep"]
 	filename   = bold yellow
 	linenumber = white
-	match      = bold white reverse
+	match      = bold black 254
 	separator  = white
 
 [alias]
-	# e-ink friendly log: bold white hash, yellow decorations, white details
-	lg = log --pretty=format:'%C(bold white)%h%Creset%C(bold yellow)%d%Creset %s %C(white)(%cr) <%an>%Creset'
+	# e-ink log: gray block for hash, yellow for decorations, hierarchy by weight
+	lg = log --pretty=format:'%C(bold white)%h%Creset %C(bold yellow)%d%Creset %s %C(white)(%cr) %C(white)<%an>%Creset'
+	# same but with full date and graph
+	lgg = log --graph --pretty=format:'%C(bold white)%h%Creset %C(bold yellow)%d%Creset %s %C(white)(%cr) <%an>%Creset'
