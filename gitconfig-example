@@ -8,49 +8,35 @@
 	diffFilter = delta --color-only
 
 [delta]
-	# E-ink theme. No "syntax" keyword anywhere → stays grayscale (no code colors).
-	# Delta pads lines to full width, so background blocks fill cleanly (no tab gaps).
-	navigate    = true          # n / N to jump between files
+	# E-ink theme, kept SIMPLE. No "syntax" keyword → stays grayscale.
+	navigate    = true
 	line-numbers = true
-	hyperlinks  = false
+	keep-plus-minus-markers = true
 	tabs        = 4
-	keep-plus-minus-markers = true   # keep literal +/- at line start as an explicit cue
 
-	# ── file header → bold white text, underlined, with the path shown once
-	file-style            = bold white
+	# ── ADDED → bold bright WHITE text on black (bright, no block). Marker "+" is white.
+	plus-style       = bold 231
+	plus-emph-style  = bold 231
+	# ── REMOVED → black text on LIGHT gray block (#e4e4e4). Marker "-" is black-on-gray.
+	# One block + one bright-text line = the two types look completely different.
+	minus-style      = black 254
+	minus-emph-style = bold black 252
+	# ── context (unchanged) → plain white, recedes
+	zero-style       = white
+
+	# ── file header → bold white, underlined
+	file-style            = bold 231
 	file-decoration-style = white ul
-	# delta shows old/new paths in its file header; color them by side:
-	file-added-label      = [+]
-	file-removed-label    = [-]
-	file-modified-label   = [~]
-
-	# ── hunk header (@@ … @@ + function context) → bold yellow, boxed to set it apart
+	# ── hunk header (@@) → bold yellow, simple underline (no unicode box)
 	hunk-header-style            = yellow bold
-	hunk-header-decoration-style = yellow box
-	hunk-header-file-style       = white bold
-	hunk-header-line-number-style = yellow bold
+	hunk-header-decoration-style = yellow ul
 
-	# Both change types use LIGHT blocks (dark grays are invisible on e-ink — they
-	# read as the black terminal bg). Distinguished by DIFFERENT light shades + bold.
-	# ── ADDED lines → bold black on LIGHTEST block (#e4e4e4 = 254)
-	plus-style      = bold black 254
-	# changed WORDS within an added line → bold black on a darker patch (pops out)
-	plus-emph-style = bold black 250
-	# ── REMOVED lines → black on a MEDIUM-light block (#a8a8a8 = 248), normal weight
-	minus-style      = black 248
-	# changed WORDS within a removed line → bold black on lighter patch
-	minus-emph-style = bold black 254
-	# ── context (unchanged) lines → plain white text on black (no block, recedes)
-	zero-style = white
-
-	# ── line-number gutter (avoid dim grays 240/245 — invisible on e-ink; use 250+)
+	# ── line-number gutter: light gray, default compact format (no padding holes)
 	line-numbers-left-style  = 250
 	line-numbers-right-style = 250
 	line-numbers-minus-style = 250
 	line-numbers-plus-style  = white
 	line-numbers-zero-style  = 250
-	line-numbers-left-format  = "{nm:>4}┊"
-	line-numbers-right-format = "{np:>4}│"
 
 [color "diff"]
 	# Each element a DISTINCT style. Underline DOES render on this terminal.
