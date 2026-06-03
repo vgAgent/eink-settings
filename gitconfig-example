@@ -12,8 +12,8 @@
 	# Each element a DISTINCT style. Underline DOES render on this terminal.
 	# file header (diff --git, index, ---, +++)  → bold white + UNDERLINE
 	meta       = white bold ul
-	# @@ hunk position → gray block (yellow was too weak); a clear section-divider bar
-	frag       = black 254 bold
+	# @@ hunk position → gray block + underline (distinguishes it from removed lines)
+	frag       = black 254 bold ul
 	# function name shown after @@ context        → plain yellow (subtle context)
 	func       = yellow
 	# commit header in git show                  → bold white + underline (like meta)
