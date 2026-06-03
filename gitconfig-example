@@ -1,10 +1,6 @@
 [color]
 	ui = auto
 
-[core]
-	# filter that puts a space after the +/- marker so it isn't glued to content
-	pager = /home/misc/.gitdiff-pager.sh
-
 [color "diff"]
 	# Each element a DISTINCT style. Underline DOES render on this terminal.
 	# file header (diff --git, index, ---, +++)  → bold white + UNDERLINE
