@@ -2,7 +2,6 @@
 	ui = auto
 
 [color "status"]
-	# e-ink: avoid green/red (dark). bold white = added, bold yellow = modified, white = rest
 	added     = bold white
 	changed   = bold yellow
 	untracked = white
@@ -10,10 +9,11 @@
 	branch    = bold white
 
 [color "diff"]
-	# added vs removed: distinguish by weight (bold vs normal) since green/red = same gray on e-ink
-	meta       = bold yellow
-	frag       = bold yellow
-	func       = bold yellow
+	# meta covers: diff --git, index, deleted/new file mode lines
+	meta       = bold white     # was bold yellow — not bright enough
+	frag       = bold yellow    # @@ hunk headers
+	func       = bold yellow    # function name in hunk header
+	commit     = bold white     # commit header in git show
 	old        = white          # removed lines — normal weight
 	new        = bold white     # added lines — bold, heavier strokes
 	whitespace = reverse
@@ -24,8 +24,20 @@
 	remote   = bold yellow
 	upstream = bold yellow
 
+[color "decorate"]
+	HEAD         = bold white reverse
+	branch       = bold white
+	remoteBranch = bold yellow
+	tag          = bold yellow
+	stash        = white
+	grafted      = bold white
+
 [color "grep"]
-	filename  = bold yellow
+	filename   = bold yellow
 	linenumber = white
 	match      = bold white reverse
 	separator  = white
+
+[alias]
+	# e-ink friendly log: bold white hash, yellow decorations, white details
+	lg = log --pretty=format:'%C(bold white)%h%Creset%C(bold yellow)%d%Creset %s %C(white)(%cr) <%an>%Creset'
