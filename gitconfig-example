@@ -2,14 +2,16 @@
 	ui = auto
 
 [color "diff"]
-	# file header (diff --git, index, ---, +++)  → underlined bold yellow, clear file boundary
-	meta       = yellow bold ul
-	# @@ hunk position                           → bold cyan, a different tier from headers
-	frag       = cyan bold
-	# function name in @@ context                → cyan (softer than frag)
-	func       = cyan
-	# commit header in git show                  → bold white
-	commit     = white bold
+	# file header (diff --git, index, ---, +++)  → gray block banner (#e4e4e4, no tab gaps
+	# here since these lines start at col 0). Strong file-boundary marker.
+	meta       = black 254
+	# @@ hunk position                           → bold bright white (yellow was too weak,
+	# cyan looked like white; @@ lines also start at col 0 so no gaps if blocked later)
+	frag       = 231 bold
+	# function name shown after @@ context        → bold white
+	func       = 231 bold
+	# commit header in git show                  → bold bright white
+	commit     = 231 bold
 	# ADDED lines   → bold bright WHITE text on black — clean, no bg, no tab gaps
 	new        = 231 bold
 	# REMOVED lines → black text on light-gray block (#e4e4e4 = same as PS1 path)
