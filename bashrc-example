@@ -57,8 +57,13 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    # e-ink dark terminal: white for user@host, yellow for path (blue/green are near-invisible)
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;37m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
+    # e-ink dark terminal: white for user@host, light gray bg + bold black for path
+    # Path bg options tested (higher = lighter gray):
+    #   \033[47;01;30m      standard gray bg (~#bcbcbc) — good but a touch dark
+    #   \033[48;5;252;01;30m  #d0d0d0 — slightly lighter
+    #   \033[48;5;254;01;30m  #e4e4e4 — settled on this, one step below pure white
+    #   \033[07m             pure white reverse — too bright
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;37m\]\u@\h\[\033[00m\]:\[\033[48;5;254;01;30m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi

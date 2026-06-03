@@ -116,6 +116,38 @@ On e-ink, ANSI colors map to gray levels based on their luminance. On a **dark (
 
 ---
 
+## Bash prompt (PS1)
+
+`bashrc-example` contains an e-ink optimized prompt. The relevant line:
+
+```bash
+PS1='...\[\033[01;37m\]\u@\h\[\033[00m\]:\[\033[48;5;254;01;30m\]\w\[\033[00m\]\$ '
+```
+
+| Part | Code | Reason |
+|---|---|---|
+| `user@host` | `01;37` bold white | Default green (`01;32`) is too dark on e-ink |
+| `:` | plain | Separator, no color needed |
+| `~/path` | `48;5;254;01;30` light gray bg + bold black text | Path needs to stand out; foreground colors alone are unreliable on e-ink — a background block is always visible regardless of color rendering |
+| `$` | plain | |
+
+**Why a background block for the path:** foreground colors depend on the terminal's palette and how e-ink maps them to grays. A background fill is independent of that — the contrast between the gray block and the black terminal is always clear.
+
+**Path background options tried** (swap the `48;5;254` part to switch):
+
+| Code | Hex | Feel |
+|---|---|---|
+| `47;01;30` | ~`#bcbcbc` | Standard gray, good but a touch dark |
+| `48;5;252` | `#d0d0d0` | Slightly lighter |
+| `48;5;254` | `#e4e4e4` | **Current** — one step below pure white, perfect balance |
+| `07` | `#ffffff` | Pure white reverse — too bright |
+
+### Install
+
+The change is already in `bashrc-example`. To apply just the prompt line, replace the PS1 block in your `~/.bashrc` with the one from `bashrc-example`.
+
+---
+
 ## Why pure backgrounds matter on e-ink
 
 E-ink screens refresh differently from LCD. When a pixel needs to change between two non-exact gray values, the display has to run a full waveform cycle on that pixel, causing visible flickering. Pure white (`#ffffff`) and pure black (`#000000`) use optimized fast-refresh modes. Themes like the default `morning` use `#e4e4e4` as the background, which forces every pixel on screen into the slow path — hence the flicker.
