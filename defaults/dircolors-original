@@ -1,0 +1,10 @@
+# To restore original ls colors, simply delete ~/.dircolors:
+#   rm ~/.dircolors
+#
+# Debian's default key values (from /etc/DIR_COLORS or built-in dircolors):
+#   di=01;34   directories    bold blue
+#   ln=01;36   symlinks       bold cyan
+#   ex=01;32   executables    bold green
+#   *.tar etc  01;31          bold red
+#   *.jpg etc  01;35          bold magenta
+#   *~ etc     00;90          dark gray (nearly invisible on dark terminals)

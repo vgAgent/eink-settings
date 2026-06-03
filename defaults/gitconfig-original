@@ -1,0 +1,11 @@
+# Original git color defaults (no ~/.gitconfig existed — git uses built-in defaults)
+# To restore: delete ~/.gitconfig or remove the [color] sections
+#
+# Git built-in defaults:
+#   status added     = green
+#   status changed   = red
+#   status untracked = red
+#   diff new         = bold (green in some versions)
+#   diff old         = bold (red in some versions)
+#   branch current   = bold green
+#   branch remote    = red
