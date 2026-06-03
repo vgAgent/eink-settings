@@ -1,5 +1,7 @@
 [color]
-	ui = auto
+	# MUST be "always", not "auto": in this tmux/ssh setup, auto fails to colorize
+	# (the minus gray-block never appeared). "always" forces color through the pager.
+	ui = always
 
 [color "diff"]
 	# Each element a DISTINCT style. Underline DOES render on this terminal.
