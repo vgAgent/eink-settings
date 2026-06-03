@@ -10,10 +10,12 @@
 	func       = cyan
 	# commit header in git show                  → bold white
 	commit     = white bold
-	# ADDED lines   → bold bright WHITE (brightest gray, heaviest strokes)
-	new        = white bold
-	# REMOVED lines → CYAN + underline (clearly dimmer gray + 2nd cue; strike didn't render)
-	old        = cyan ul
+	# ADDED lines   → bold bright WHITE (#ffffff) — brightest, heaviest
+	new        = 231 bold
+	# REMOVED lines → medium GRAY (#8a8a8a) — clearly dimmer, still readable
+	# (terminal renders no underline/strike, and cyan≈white on e-ink, so only
+	#  a real brightness gap differentiates them)
+	old        = 245
 	# trailing whitespace                        → reverse so it's caught
 	whitespace = reverse
 
