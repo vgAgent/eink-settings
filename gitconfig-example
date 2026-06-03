@@ -1,6 +1,10 @@
 [color]
 	ui = auto
 
+[core]
+	# filter that puts a space after the +/- marker so it isn't glued to content
+	pager = /home/misc/.gitdiff-pager.sh
+
 [color "diff"]
 	# Each element a DISTINCT style. Underline DOES render on this terminal.
 	# file header (diff --git, index, ---, +++)  → bold white + UNDERLINE
@@ -13,9 +17,9 @@
 	commit     = white bold ul
 	# ADDED lines   → bold bright WHITE, no underline, no block (clean, no tab gaps)
 	new        = 231 bold
-	# REMOVED lines → black text on light-gray block (#e4e4e4) — the only other
-	# distinct, always-visible style. Leading tabs gap, but it reads clearly.
-	old        = black 254
+	# REMOVED lines → BOLD black on light-gray block (#e4e4e4). Bold is essential —
+	# non-bold black is too thin to read on e-ink (this matches the PS1 path style).
+	old        = black 254 bold
 	# trailing whitespace                        → reverse so it's caught
 	whitespace = reverse
 
