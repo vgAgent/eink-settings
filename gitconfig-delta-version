@@ -1,6 +1,45 @@
 [color]
 	ui = auto
 
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	# E-ink theme, kept SIMPLE. No "syntax" keyword → stays grayscale.
+	navigate    = true
+	line-numbers = true
+	keep-plus-minus-markers = true
+	tabs        = 4
+
+	# ── ADDED → bold bright WHITE text on black (bright, no block). Marker "+" is white.
+	plus-style       = bold 231
+	plus-emph-style  = bold 231
+	# ── REMOVED → black text on LIGHT gray block (#e4e4e4). Marker "-" is black-on-gray.
+	# One block + one bright-text line = the two types look completely different.
+	minus-style      = black 254
+	minus-emph-style = bold black 252
+	# ── context (unchanged) → plain white, recedes
+	zero-style       = white
+
+	# ── file header → bold white, underlined
+	file-style            = bold 231
+	file-decoration-style = white ul
+	# ── hunk header (@@) → bold yellow, simple underline (no unicode box)
+	hunk-header-style            = yellow bold
+	hunk-header-decoration-style = yellow ul
+
+	# ── line-number gutter: ONE clean column, ASCII only (unicode ⋮ │ render as
+	# garbage/dark-holes on this e-ink terminal). Hide the old-number column.
+	line-numbers-left-format  = ""
+	line-numbers-right-format = "{np:>3} "
+	line-numbers-right-style  = white
+	line-numbers-minus-style  = white
+	line-numbers-plus-style   = white
+	line-numbers-zero-style   = 250
+
 [color "diff"]
 	# Each element a DISTINCT style. Underline DOES render on this terminal.
 	# file header (diff --git, index, ---, +++)  → bold white + UNDERLINE
@@ -62,3 +101,6 @@
 	lg = log --pretty=format:'%C(bold white)%h%Creset %C(bold yellow)%d%Creset %s %C(white)(%cr) %C(white)<%an>%Creset'
 	# same but with full date and graph
 	lgg = log --graph --pretty=format:'%C(bold white)%h%Creset %C(bold yellow)%d%Creset %s %C(white)(%cr) <%an>%Creset'
+	# OLD pre-delta diff (uses [color "diff"] styling + less, bypasses delta)
+	rawdiff = -c core.pager='less -R' diff
+	rawshow = -c core.pager='less -R' show
